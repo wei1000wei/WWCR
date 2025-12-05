@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWCR - 主页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .home-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .home-title {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .home-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .home-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .home-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        
+        .login-btn {
+            background-color: #4CAF50;
+        }
+        
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .register-btn {
+            background-color: #2196F3;
+        }
+        
+        .register-btn:hover {
+            background-color: #1976D2;
+        }
+        
+        .chat-btn {
+            background-color: #FF9800;
+        }
+        
+        .chat-btn:hover {
+            background-color: #F57C00;
+        }
+        
+        .admin-btn {
+            background-color: #9C27B0;
+        }
+        
+        .admin-btn:hover {
+            background-color: #7B1FA2;
+        }
+        
+        .user-info {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+        
+        .username {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        .features {
+            margin: 40px 0;
+            text-align: left;
+        }
+        
+        .features h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .features li:before {
+            content: '✓';
+            color: #4CAF50;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .promotion-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .promotion-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .promotion-section p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <h1 class="home-title">WWCR 聊天</h1>
+        <p class="home-subtitle">简单、高效的群组聊天平台</p>
+        <p class="home-description">
+            WWCR聊天是由WW打造的一个功能强大的群组聊天平台，支持创建群组、实时聊天、群组管理等功能。
+            您可以与朋友、家人或同事创建群组，进行实时交流和分享。
+            平台采用了先进的安全技术，确保您的聊天内容安全可靠。
+        </p>
+        
+        <div class="features">
+            <h3>主要功能</h3>
+            <ul>
+                <li>创建和加入群组</li>
+                <li>实时消息发送和接收</li>
+                <li>群组管理功能</li>
+                <li>角色权限管理</li>
+                <li>消息删除功能</li>
+                <li>黑名单管理</li>
+            </ul>
+            
+        
+        <div id="user-section"></div>
+        
+        <div id="auth-buttons"></div>
+        
+        <div class="promotion-section">
+            <h2>将解锁社交新次元！WWCR 聊天网站，让每一次对话都充满惊喜</h2>
+            <p>还在为通讯录里 “躺尸” 的好友发愁？还在感叹身边难觅同频灵魂？别让孤独占据生活的角落，今天要给大家重磅推荐一款宝藏社交平台 ——WWCR 聊天网站，在这里，“小” 窗口藏着 “大” 世界，每一次点击都可能遇见命中注定的知己，每一段对话都能碰撞出奇妙的火花！更难得的是，它专注纯粹聊天功能，却搭载着超贴心的丰富权限管理，让社交边界由你全权掌控！</p>
+            <p>WWCR 最让人惊喜的，是它打破了传统社交的壁垒，让 “相遇” 变得简单又浪漫。无需复杂的注册流程，手机号一键登录，填写简单的兴趣标签 —— 无论是喜欢小众乐队、痴迷悬疑小说，还是热衷户外徒步、沉迷手作 DIY，系统都会精准匹配与你志同道合的小伙伴。想象一下，当你深夜分享一首循环播放的老歌，屏幕那头立刻传来 “我也超爱这首歌！” 的回应；当你纠结周末该去看展还是露营，马上有同好发来详细攻略，这种 “原来你也在这里” 的默契，正是 WWCR 最动人的魔力。</p>
+            <p>作为一款主打 “真实、温暖、多元” 的聊天平台，WWCR 用丰富的权限管理给足了用户安全感与掌控感。很多人都有过这样的困扰：想和对方保持聊天联系，却不想暴露自己的动态；或是遇到只在你分享生活后才主动搭话的 “朋友圈观察者”，让人倍感被动。而 WWCR 的权限设置完美解决了这些问题：你可以自由开启 “仅聊天模式”，屏蔽自己的动态展示，只保留纯粹的沟通渠道，不用再为不必要的打扰烦恼；也能设置 “消息免打扰时段”，工作学习时不被闲聊打断，休息时间再尽情畅聊；针对陌生好友，还能限制 “语音 / 图片发送权限”，先通过文字建立信任，再逐步开放互动权限。配合严格的实名认证机制和智能风控系统，每一个头像背后都是鲜活真实的灵魂，每一次聊天都能按你的节奏展开。</p>
+            <p>在这里，你可以真正卸下伪装，按自己的心意掌控社交边界：向陌生人吐槽工作的烦恼，开启 “仅本次聊天可见” 模式，不用担心隐私泄露；和同好交流小众爱好，开放 “兴趣动态共享” 权限，找到真正懂你的圈子；面对不太熟悉的联系人，设置 “单句回复限制”，避免尬聊纠缠。平台还支持 “权限一键修改”，从 “亲密互动” 到 “仅聊天”，从 “动态可见” 到 “完全屏蔽”，只需轻轻一点，就能根据关系亲疏随时调整，让社交不再有负担。</p>
+            <p>除了一对一畅聊，WWCR 的 “兴趣社群” 也搭载了精细化权限管理，堪称宝藏聚集地。从 “铲屎官交流群”“考研打卡营” 到 “剧本杀组队局”“旅行搭子公社”，上千个主题社群覆盖生活的方方面面。作为群成员，你可以设置 “群消息折叠”“@ 我仅重要事项”，避免被刷屏打扰；作为群主，能开启 “新人审核权限”“发言权限管控”，过滤广告骚扰，打造纯粹的兴趣交流空间。喜欢追剧？影视社群里有大神解读细节彩蛋，还能设置 “剧透屏蔽权限”，不影响观剧体验；想提升技能？英语角、绘画群里有伙伴互相督促，开启 “打卡权限”，让进步更有仪式感。</p>
+            <p>更值得一提的是，WWCR 把权限管理融入特色聊天功能，让沟通既自由又安心。“语音派对” 中，你可以设置 “仅好友可邀请你加入”，避免陌生人群聊的尴尬；“匿名树洞” 支持 “发布后隐藏足迹”，倾诉秘密后可随时关闭评论权限，只保留陌生人的善意鼓励；“话题挑战” 里，能选择 “仅关注者可见”，不用害怕小众观点被误解。这种 “纯粹聊天 + 灵活权限” 的组合，让每一种互动都能精准匹配你的需求。</p>
+            <p>在这个快节奏的时代，我们都渴望真诚的连接，更需要有边界的社交。WWCR 不堆砌复杂功能，专注做好聊天本身，却用丰富的权限管理，让每一次对话都既安心又自在。它没有功利的社交目的，只有按你心意定制的沟通体验：想浅尝辄止，就开启仅聊天模式；想深入交流，就逐步开放权限；想安静独处，就设置免打扰，一切都由你说了算。无论你是想找志同道合的朋友，还是想倾诉心事、打发时光，甚至是想拓展人脉、寻找机会，WWCR 都能在不打扰你生活的前提下，满足你的社交需求。</p>
+            <p>现在登录 WWCR 聊天网站，注册即送 “新人体验礼包”，包含专属头像框、语音时长券和 “权限定制卡”，可解锁高级权限设置功能！还在等什么？打开电脑、拿起手机，加入 WWCR 的大家庭，让每一次对话都充满惊喜，让社交边界由你掌控，让孤独从此远离，让生活因有边界的连接而更精彩！</p>
+        </div>
+    </div>
+    </div>
+    
+    <script>
+        // Check if user is logged in
+        const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user'));
+        
+        const userSection = document.getElementById('user-section');
+        const authButtons = document.getElementById('auth-buttons');
+        
+        if (token && user) {
+            // User is logged in
+            userSection.innerHTML = `
+                <div class="user-info">
+                    <div class="username">欢迎，${user.username}！</div>
+                    <p>您已登录，可以开始聊天了</p>
+                </div>
+            `;
+            
+            // Build buttons based on user role
+            let buttonsHTML = `
+                <a href="index.html" class="home-btn chat-btn">聊天室</a>
+                <button class="logout-btn" onclick="logout()">退出登录</button>
+            `;
+            
+            // Add admin button if user is admin or owner
+            if (user.role === 'admin' || user.role === 'owner') {
+                buttonsHTML += `<a href="admin.html" class="home-btn admin-btn">管理</a>`;
+            }
+            
+            authButtons.innerHTML = buttonsHTML;
+        } else {
+            // User is not logged in
+            authButtons.innerHTML = `
+                <a href="login.html" class="home-btn login-btn">登录</a>
+                <a href="register.html" class="home-btn register-btn">注册</a>
+            `;
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

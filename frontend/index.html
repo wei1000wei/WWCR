@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWCR - 聊天</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>WWCR 聊天</h2>
+                <div class="user-info">
+                    <span class="username" id="username"></span>
+                    <button class="home-btn" id="home-btn">返回主页</button>
+                    <button class="logout-btn" id="logout-btn">退出</button>
+                </div>
+            </div>
+            
+            <div class="groups-list" id="groups-list">
+                <!-- Groups will be populated here -->
+            </div>
+            
+            <div class="group-actions">
+                <button class="create-group-btn" id="create-group-btn">创建群组</button>
+                <div class="join-group">
+                    <input type="text" id="join-group-id" placeholder="输入群组ID">
+                    <button class="join-group-btn" id="join-group-btn">加入</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <div class="chat-header">
+                <div class="current-group" id="current-group"></div>
+                <button class="group-settings-btn" id="group-settings-btn">群组信息</button>
+            </div>
+            
+            <div class="messages-container" id="messages-container">
+                <!-- Messages will be populated here -->
+            </div>
+            
+            <div class="message-input-container">
+                <form class="message-form" id="message-form">
+                    <input type="text" class="message-input" id="message-input" placeholder="输入消息..." required>
+                    <button type="submit" class="send-btn">发送</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Group Modal -->
+    <div class="modal" id="create-group-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">创建群组</h3>
+                <button class="close-btn" id="close-create-modal">&times;</button>
+            </div>
+            <form id="create-group-form">
+                <div class="form-group">
+                    <label for="group-name">群组名称</label>
+                    <input type="text" id="group-name" name="groupName" required>
+                </div>
+                <button type="submit" class="btn">创建</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Group Settings Modal -->
+    <div class="modal" id="group-settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">群组信息</h3>
+                <button class="close-btn" id="close-settings-modal">&times;</button>
+            </div>
+            <div class="group-settings">
+                <div class="settings-section">
+                    <h3>群组信息</h3>
+                    <div class="group-info">
+                        <p><strong>群组名称：</strong><span id="group-info-name"></span></p>
+                        <p><strong>群组ID：</strong><span id="group-info-id"></span></p>
+                        <p><strong>群主：</strong><span id="group-info-owner"></span></p>
+                        <p><strong>创建时间：</strong><span id="group-info-created"></span></p>
+                    </div>
+
+                </div>
+                <div class="settings-section">
+                    <h3>成员列表</h3>
+                    <div class="members-list" id="members-list">
+                        <!-- Members will be populated here -->
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>管理员列表</h3>
+                    <div class="admins-list" id="admins-list">
+                        <!-- Admins will be populated here -->
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>黑名单</h3>
+                    <div class="blacklist-list" id="blacklist-list">
+                        <!-- Blacklist will be populated here -->
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>加入申请</h3>
+                    <div class="requests-list" id="requests-list">
+                        <!-- Join requests will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
