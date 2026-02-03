@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWCR - 注册</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+            <img src="images/logo.png" alt="WWCR Logo" style="width: 40px; height: 40px; border-radius: 50%;">
+            <h1>WWCR 聊天</h1>
+        </div>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="realName">真实姓名</label>
+                <input type="text" id="realName" name="realName" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">洛谷号，若有）+详细信息（用于认证）</label>
+                <input type="text" id="phone" name="phone" required placeholder="例如：123456（洛谷号）+学生/老师/其他">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">注册</button>
+        </form>
+        <div class="auth-link">
+            <p>已经有账号？<a href="login.html">登录</a></p>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+</html>

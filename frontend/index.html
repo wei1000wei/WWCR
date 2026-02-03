@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWCR - 聊天</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="images/logo.png" alt="WWCR Logo" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <h2>WWCR 聊天</h2>
+                </div>
+                <div class="user-info">
+                    <span class="username" id="username"></span>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="home-btn" id="home-btn">返回主页</button>
+                        <button class="home-btn" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="groups-list" id="groups-list">
+                <!-- Groups will be populated here -->
+            </div>
+            
+            <div class="group-actions">
+                <button class="create-group-btn" id="create-group-btn">创建群组</button>
+                <div class="join-group">
+                    <input type="text" id="join-group-id" placeholder="输入群组ID">
+                    <button class="join-group-btn" id="join-group-btn">加入</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Area -->
+        <div class="chat-area" id="chat-area">
+            <!-- Sidebar Toggle Button -->
+            <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">≡</button>
+            
+            <div class="chat-header">
+                <div class="current-group" id="current-group"></div>
+                <div class="search-container" style="display: flex; align-items: center; gap: 10px;">
+                    <input type="text" id="search-input" placeholder="搜索消息..." style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 4px; background-color: var(--input-bg); color: var(--text-primary);">
+                    <button class="search-btn" id="search-btn" style="padding: 8px 16px; background-color: var(--accent-color); color: white; border: none; border-radius: 4px; cursor: pointer;">搜索</button>
+                    <button class="clear-search-btn" id="clear-search-btn" style="padding: 8px 16px; background-color: var(--error-color); color: white; border: none; border-radius: 4px; cursor: pointer; display: none;">清除</button>
+                </div>
+                <button class="group-settings-btn" id="group-settings-btn">群组信息</button>
+            </div>
+            
+            <div class="messages-container" id="messages-container">
+                <!-- Messages will be populated here -->
+            </div>
+            
+            <div class="message-input-container">
+                <!-- 回复容器 -->
+                <div class="reply-container" id="reply-container" style="display: none;">
+                    <div class="reply-content" id="reply-content"></div>
+                    <button class="cancel-reply-btn" id="cancel-reply-btn">取消回复</button>
+                </div>
+                
+                <form class="message-form" id="message-form">
+                    <input type="text" class="message-input" id="message-input" placeholder="输入消息..." required>
+                    <input type="file" id="file-input" class="file-input" style="display: none;" multiple>
+                    <button type="button" class="file-upload-btn" id="file-upload-btn">📎</button>
+                    <button type="submit" class="send-btn">发送</button>
+                </form>
+                <div class="file-upload-progress" id="file-upload-progress" style="display: none;">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <div class="progress-text" id="progress-text">上传中...</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-menu">
+            <a href="home.html" class="nav-item active">主页</a>
+            <a href="index.html" class="nav-item">聊天室</a>
+            <a href="announcements.html" class="nav-item">公告中心</a>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">管理</div>
+                <a href="admin.html" class="nav-item" id="admin-link">用户管理</a>
+                <a href="logs.html" class="nav-item" id="logs-link">系统日志</a>
+                <a href="publish-announcement.html" class="nav-item" id="publish-announcement-link">发布公告</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Group Modal -->
+    <div class="modal" id="create-group-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">创建群组</h3>
+                <button class="close-btn" id="close-create-modal">&times;</button>
+            </div>
+            <form id="create-group-form">
+                <div class="form-group">
+                    <label for="group-name">群组名称</label>
+                    <input type="text" id="group-name" name="groupName" required>
+                </div>
+                <button type="submit" class="btn">创建</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Group Settings Modal -->
+    <div class="modal" id="group-settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">群组信息</h3>
+                <button class="close-btn" id="close-settings-modal">&times;</button>
+            </div>
+            <div class="group-settings">
+                <div class="settings-section">
+                    <button class="info-btn" id="group-info-btn">查看群组信息</button>
+                    <!-- Group info popup -->
+                    <div class="popup" id="group-info-popup">
+                        <div class="popup-content">
+                            <div class="group-info">
+                                <p><strong>群组名称：</strong><span id="group-info-name"></span></p>
+                                <p><strong>群组ID：</strong><span id="group-info-id"></span></p>
+                                <p><strong>群主：</strong><span id="group-info-owner"></span></p>
+                                <p><strong>创建时间：</strong><span id="group-info-created"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>成员列表</h3>
+                    <div class="members-list" id="members-list">
+                        <!-- Members will be populated here -->
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>管理员列表</h3>
+                    <div class="admins-list" id="admins-list">
+                        <!-- Admins will be populated here -->
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>黑名单</h3>
+                    <div class="blacklist-list" id="blacklist-list">
+                        <!-- Blacklist will be populated here -->
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <button class="info-btn" id="invite-user-btn">邀请成员</button>
+                    <!-- Invite user popup -->
+                    <div class="popup" id="invite-user-popup">
+                        <div class="popup-content">
+                            <div class="invite-member">
+                                <input type="text" id="invite-username" placeholder="搜索要邀请的用户名">
+                                <div class="user-search-results" id="user-search-results"></div>
+                                <button class="btn" id="invite-member-btn">发送邀请</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>加入申请</h3>
+                    <div class="requests-list" id="requests-list">
+                        <!-- Join requests will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
